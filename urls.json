@@ -1,3 +1,57 @@
 {
-    "modifications": []
+    "modifications": [
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/root",
+            "value": {
+                "index": {
+                    "url": "$",
+                    "func": "index"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/index",
+            "value": {
+                "authentication": {
+                    "url": "login/$",
+                    "func": "auth_login"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/authentication",
+            "value": {
+                "signup": {
+                    "url": "signup/$",
+                    "func": "signup_request"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/signup",
+            "value": {
+                "account": {
+                    "url": "account/$",
+                    "func": "account_request"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/account",
+            "value": {
+                "logout": {
+                    "url": "logout$",
+                    "func": "logout",
+                    "params": {
+                        "next_page": "/"
+                    }
+                }
+            }
+        }
+    ]
 }

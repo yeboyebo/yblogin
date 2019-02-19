@@ -1,8 +1,30 @@
 {
     "modifications": {
-        "patchScript": [],
+        "patchScript": [
+            {
+                "name": "app_portal__views_portal.py",
+                "path": "apps/portal/viewset/"
+            }
+        ],
         "deleteFile": [],
-        "addFile": [],
+        "addFile": [
+            {
+                "name": "app_portal__signup.html",
+                "path": "apps/portal/templates/portal/"
+            },
+            {
+                "name": "app_portal__account.html",
+                "path": "apps/portal/templates/portal/"
+            },
+            {
+                "name": "app_portal__login.html",
+                "path": "apps/portal/templates/portal/"
+            },
+            {
+                "name": "app_portal__newgroup.html",
+                "path": "apps/portal/templates/portal/"
+            }
+        ],
         "replaceFile": [
             {
                 "name": "dependencias.json",
