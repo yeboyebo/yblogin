@@ -23,6 +23,66 @@
             {
                 "name": "app_portal__newgroup.html",
                 "path": "apps/portal/templates/portal/"
+            },
+            {
+                "path": "apps/portal/templates/portal/",
+                "name": "app_portal__menu_system.json"
+            },
+            {
+                "path": "apps/portal/templates/portal/",
+                "name": "app_portal__403.html"
+            },
+            {
+                "path": "apps/portal/templates/portal/plantillas/",
+                "name": "app_portal__masterauth_user.json"
+            },
+            {
+                "path": "apps/portal/templates/portal/plantillas/",
+                "name": "app_portal__auth_user.json"
+            },
+            {
+                "path": "apps/portal/templates/portal/plantillas/",
+                "name": "app_portal__masterauth_group.json"
+            },
+            {
+                "path": "apps/portal/templates/portal/plantillas/",
+                "name": "app_portal__auth_group.json"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__auth_user_def.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__sis_acl_def.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin____init__.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__auth_group.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__models.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__auth_group_def.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__auth_user.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__sis_acl.py"
+            },
+            {
+                "path": "models/fllogin/",
+                "name": "model_fllogin__fllogin_def.py"
             }
         ],
         "replaceFile": [

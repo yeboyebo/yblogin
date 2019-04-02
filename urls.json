@@ -52,6 +52,76 @@
                     }
                 }
             }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/logout",
+            "value": {
+                "system": {
+                    "url": "system$",
+                    "func": "system"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/system",
+            "value": {
+                "deleteUser": {
+                    "url": "deleteUser/(?P<user>\\w+)$",
+                    "func": "deleteUser"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/deleteUser",
+            "value": {
+                "deleteUserGroup": {
+                    "url": "deleteUserGroup/(?P<user>\\w+)/(?P<groupname>\\w+)$",
+                    "func": "deleteUserGroup"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/deleteUserGroup",
+            "value": {
+                "addGroup": {
+                    "url": "addGroup/(?P<username>\\w+)$",
+                    "func": "addGroup"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/addGroup",
+            "value": {
+                "newgroup": {
+                    "url": "newgroup/$",
+                    "func": "newgroup_request"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/newgroup",
+            "value": {
+                "403": {
+                    "url": "403$",
+                    "func": "forbiddenError"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/models/root",
+            "value": {
+                "fllogin": {
+                    "auth_user": null,
+                    "auth_group": null
+                }
+            }
         }
     ]
 }

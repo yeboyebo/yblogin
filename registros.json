@@ -1,3 +1,14 @@
 {
-    "modifications": []
+    "modifications": [
+        {
+            "type": "insertAfterNode",
+            "path": "/root",
+            "value": {
+                "fllogin": {
+                    "auth_group": null,
+                    "auth_user": null
+                }
+            }
+        }
+    ]
 }
