@@ -83,6 +83,10 @@
             {
                 "path": "models/fllogin/",
                 "name": "model_fllogin__fllogin_def.py"
+            },
+            {
+                "path": "apps/portal/templates/portal/",
+                "name": "app_portal__acl.html"
             }
         ],
         "replaceFile": [

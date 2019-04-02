@@ -113,7 +113,7 @@ class yblogin(interna):
 
     def yblogin_deleteUser(self, request, user):
         User.objects.filter(username=user).delete()
-        return HttpResponseRedirect("/users")
+        return HttpResponseRedirect("/system/auth_user/master")
 
     def yblogin_logout(self, *args, **kwargs):
         return auth_views.logout(*args, **kwargs)
@@ -150,7 +150,7 @@ class yblogin(interna):
                     return self.iface.newgroup(request, " Añadido")
                 except Exception as exc:
                     print(exc)
-                    return self.iface.newgroup(request, "El usuario ya existe")
+                    return self.iface.newgroup(request, "El grupo ya existe")
         return self.iface.newgroup(request, "")
 
     def yblogin_userTable(self, request, po=1):
