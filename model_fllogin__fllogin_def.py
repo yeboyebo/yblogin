@@ -11,14 +11,14 @@ class interna(qsatype.objetoBase):
         self.ctx = context
 
 
-# @class_declaration oficial #
+# @class_declaration yblogin #
 from YBLEGACY.constantes import *
 from YBUTILS.viewREST import clasesBase
 
 
-class oficial(interna):
+class yblogin(interna):
 
-    def oficial_changeRule(self, oR, nR):
+    def yblogin_changeRule(self, oR, nR):
         if oR == "rw":
             if nR == "write":
                 return "r-"
@@ -42,7 +42,7 @@ class oficial(interna):
                 return "rw"
         return "--"
 
-    def oficial_checkAppPermision(self, tipoAcl, valorAcl, tipo, valor, objPermiso, app):
+    def yblogin_checkAppPermision(self, tipoAcl, valorAcl, tipo, valor, objPermiso, app):
         # print("hay que ver el padre y cambiar permiso si contrario")
         q = qsatype.FLSqlQuery()
         q.setTablesList(u"sis_acl")
@@ -79,7 +79,7 @@ class oficial(interna):
                     print("este caso no se que es")
         return True
 
-    def oficial_manageAcl(self, tipoAcl, valorAcl, tipo, valor, objPermiso, app, fromApp):
+    def yblogin_manageAcl(self, tipoAcl, valorAcl, tipo, valor, objPermiso, app, fromApp):
         q = qsatype.FLSqlQuery()
         q.setTablesList(u"sis_acl")
         q.setSelect(u"id, permiso")
@@ -121,7 +121,7 @@ class oficial(interna):
                     return False
         return permiso
 
-    # def oficial_manageAcl(self, tipoAcl, valorAcl, tipo, valor, permiso, app, fromApp):
+    # def yblogin_manageAcl(self, tipoAcl, valorAcl, tipo, valor, permiso, app, fromApp):
     #     idSisAcl = qsatype.FLUtil.sqlSelect(u"sis_acl", u"id", ustr(tipoAcl, u" = '", valorAcl, u"' AND tipo = '", tipo, u"' AND valor = '", valor, "'"))
     #     if idSisAcl:
     #         if not qsatype.FLUtil.sqlUpdate(u"sis_acl", u"permiso", permiso, ustr(u"id = '", str(idSisAcl), "'")):
@@ -147,7 +147,7 @@ class oficial(interna):
     #             return False
     #     return True
 
-    def oficial_changePermision(self, model, oParam):
+    def yblogin_changePermision(self, model, oParam):
         # print(oParam)
         tipo = oParam["tipo"]
         tipoAcl = oParam["tipoAcl"]
@@ -178,20 +178,20 @@ class oficial(interna):
         super().__init__(context)
 
     def changePermision(self, model, oParam):
-        return self.ctx.oficial_changePermision(model, oParam)
+        return self.ctx.yblogin_changePermision(model, oParam)
 
     def changeRule(self, oR, nR):
-        return self.ctx.oficial_changeRule(oR, nR)
+        return self.ctx.yblogin_changeRule(oR, nR)
 
     def checkAppPermision(self, tipoAcl, valorAcl, tipo, valor, permiso, app):
-        return self.ctx.oficial_checkAppPermision(tipoAcl, valorAcl, tipo, valor, permiso, app)
+        return self.ctx.yblogin_checkAppPermision(tipoAcl, valorAcl, tipo, valor, permiso, app)
 
     def manageAcl(self, tipoAcl, valorAcl, tipo, valor, objPermiso, app, fromApp):
-        return self.ctx.oficial_manageAcl(tipoAcl, valorAcl, tipo, valor, objPermiso, app, fromApp)
+        return self.ctx.yblogin_manageAcl(tipoAcl, valorAcl, tipo, valor, objPermiso, app, fromApp)
 
 
 # @class_declaration head #
-class head(oficial):
+class head(yblogin):
 
     def __init__(self, context=None):
         super().__init__(context)

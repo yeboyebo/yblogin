@@ -11,37 +11,37 @@ class interna(qsatype.objetoBase):
         self.ctx = context
 
 
-# @class_declaration oficial #
+# @class_declaration yblogin #
 from YBLEGACY.constantes import *
 
 
-class oficial(interna):
+class yblogin(interna):
 
-    def oficial_initValidation(self, name, data=None):
+    def yblogin_initValidation(self, name, data=None):
         response = True
         return response
 
-    def oficial_iniciaValoresLabel(self, model=None, template=None, cursor=None):
+    def yblogin_iniciaValoresLabel(self, model=None, template=None, cursor=None):
         labels = {}
         return labels
 
-    def oficial_bChLabel(self, fN=None, cursor=None):
+    def yblogin_bChLabel(self, fN=None, cursor=None):
         labels = {}
         return labels
 
-    def oficial_getFilters(self, model, name, template=None):
+    def yblogin_getFilters(self, model, name, template=None):
         filters = []
         return filters
 
-    def oficial_getForeignFields(self, model, template=None):
+    def yblogin_getForeignFields(self, model, template=None):
         fields = []
         return fields
 
-    def oficial_getDesc(self):
+    def yblogin_getDesc(self):
         desc = "name"
         return desc
 
-    def oficial_queryGrid_usergroups(self, model, filters):
+    def yblogin_queryGrid_usergroups(self, model, filters):
         query = {}
         query["tablesList"] = u"auth_user_groups, auth_user"
         query["select"] = u"auth_user.username"
@@ -50,7 +50,7 @@ class oficial(interna):
         # query["orderby"] = ""
         return query
 
-    def oficial_eliminarUsuario(self, model, oParam):
+    def yblogin_eliminarUsuario(self, model, oParam):
         response = {}
         if "selecteds" not in oParam or not oParam['selecteds']:
             response['status'] = -1
@@ -63,11 +63,11 @@ class oficial(interna):
             user.save()
         return True
 
-    def oficial_accessControl(self, model):
+    def yblogin_accessControl(self, model):
         url = '/system/acl/auth_group/' + str(model.pk)
         return url
 
-    def oficial_changePermision(self, model, oParam):
+    def yblogin_changePermision(self, model, oParam):
         oParam["tipoAcl"] = "grupo"
         oParam["pk"] = model.pk
         return fllogin_def.iface.changePermision(model, oParam)
@@ -76,38 +76,38 @@ class oficial(interna):
         super().__init__(context)
 
     def initValidation(self, name, data=None):
-        return self.ctx.oficial_initValidation(name, data=None)
+        return self.ctx.yblogin_initValidation(name, data=None)
 
     def iniciaValoresLabel(self, model=None, template=None, cursor=None):
-        return self.ctx.oficial_iniciaValoresLabel(model, template, cursor)
+        return self.ctx.yblogin_iniciaValoresLabel(model, template, cursor)
 
     def bChLabel(self, fN=None, cursor=None):
-        return self.ctx.oficial_bChLabel(fN, cursor)
+        return self.ctx.yblogin_bChLabel(fN, cursor)
 
     def getFilters(self, model, name, template=None):
-        return self.ctx.oficial_getFilters(model, name, template)
+        return self.ctx.yblogin_getFilters(model, name, template)
 
     def getForeignFields(self, model, template=None):
-        return self.ctx.oficial_getForeignFields(model, template)
+        return self.ctx.yblogin_getForeignFields(model, template)
 
     def getDesc(self):
-        return self.ctx.oficial_getDesc()
+        return self.ctx.yblogin_getDesc()
 
     def queryGrid_usergroups(self, model, filters):
-        return self.ctx.oficial_queryGrid_usergroups(model, filters)
+        return self.ctx.yblogin_queryGrid_usergroups(model, filters)
 
     def eliminarUsuario(self, model, oParam):
-        return self.ctx.oficial_eliminarUsuario(model, oParam)
+        return self.ctx.yblogin_eliminarUsuario(model, oParam)
 
     def accessControl(self, model):
-        return self.ctx.oficial_accessControl(model)
+        return self.ctx.yblogin_accessControl(model)
 
     def changePermision(self, model, oParam):
-        return self.ctx.oficial_changePermision(model, oParam)
+        return self.ctx.yblogin_changePermision(model, oParam)
 
 
 # @class_declaration head #
-class head(oficial):
+class head(yblogin):
 
     def __init__(self, context=None):
         super().__init__(context)

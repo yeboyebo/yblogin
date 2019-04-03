@@ -11,8 +11,8 @@ class interna_auth_user(modelos.mtd_auth_user, helpers.MixinConAcciones):
         proxy = True
 
 
-# @class_declaration oficial_auth_user #
-class oficial_auth_user(interna_auth_user, helpers.MixinConAcciones):
+# @class_declaration yblogin_auth_user #
+class yblogin_auth_user(interna_auth_user, helpers.MixinConAcciones):
     pass
 
     class Meta:
@@ -57,7 +57,7 @@ class oficial_auth_user(interna_auth_user, helpers.MixinConAcciones):
         return form.iface.accessControl(self)
 
 # @class_declaration auth_user #
-class auth_user(oficial_auth_user, helpers.MixinConAcciones):
+class auth_user(yblogin_auth_user, helpers.MixinConAcciones):
     pass
 
     class Meta:

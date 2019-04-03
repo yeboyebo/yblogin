@@ -11,8 +11,8 @@ class interna_auth_group(modelos.mtd_auth_group, helpers.MixinConAcciones):
         proxy = True
 
 
-# @class_declaration oficial_auth_group #
-class oficial_auth_group(interna_auth_group, helpers.MixinConAcciones):
+# @class_declaration yblogin_auth_group #
+class yblogin_auth_group(interna_auth_group, helpers.MixinConAcciones):
     pass
 
     class Meta:
@@ -54,7 +54,7 @@ class oficial_auth_group(interna_auth_group, helpers.MixinConAcciones):
 
 
 # @class_declaration auth_group #
-class auth_group(oficial_auth_group, helpers.MixinConAcciones):
+class auth_group(yblogin_auth_group, helpers.MixinConAcciones):
     pass
 
     class Meta:
