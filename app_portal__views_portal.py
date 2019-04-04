@@ -27,20 +27,21 @@ class yblogin(interna):
             next_url = request.GET.get("next", None)
             if next_url:
                 return HttpResponseRedirect(next_url)
+        return HttpResponseRedirect("/dashboard")
 
-        history = cacheController.addHistory(request, None, None)
-        history = history["list"][history["pos"] - 1] if history["pos"] > 0 else history["list"][history["pos"]]
-        usuario = request.user.username
-        superuser = request.user.is_superuser
+        # history = cacheController.addHistory(request, None, None)
+        # history = history["list"][history["pos"] - 1] if history["pos"] > 0 else history["list"][history["pos"]]
+        # usuario = request.user.username
+        # superuser = request.user.is_superuser
 
-        dctMenu = templateCTX.cargaMenuJSON("portal/menu_portal.json")
-        dctMenu = dctMenu["items"]
-        miMenu = accessControl.accessControl.dameDashboard(request.user, dctMenu)
+        # dctMenu = templateCTX.cargaMenuJSON("portal/menu_portal.json")
+        # dctMenu = dctMenu["items"]
+        # miMenu = accessControl.accessControl.dameDashboard(request.user, dctMenu)
 
-        # TODO
-        if len(miMenu) == 1:
-            return HttpResponseRedirect(miMenu[0]["NAME"])
-        return render(request, "portal/index.html", {"aplic": "portal", "menuJson": miMenu, "usuario": usuario, "superuser": superuser, "history": history, "next": "/"})
+        # # TODO
+        # if len(miMenu) == 1:
+        #     return HttpResponseRedirect(miMenu[0]["NAME"])
+        # return render(request, "portal/index.html", {"aplic": "portal", "menuJson": miMenu, "usuario": usuario, "superuser": superuser, "history": history, "next": "/"})
 
     def yblogin_login(self, request, error=None):
         if not error:
