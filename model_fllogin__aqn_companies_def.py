@@ -15,7 +15,7 @@ from YBLEGACY.constantes import *
 
 
 class yblogin(interna):
-
+ 
     def yblogin_getDesc(self):
         return None
 

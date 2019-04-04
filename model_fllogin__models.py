@@ -73,7 +73,7 @@ class mtd_aqn_user(models.Model, BaseModel):
     nombre = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
     apellidos = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
     email = models.CharField(unique=True, max_length=254)._miextend(OLDTIPO="STRING")
-    idcompania = models.ForeignKey("mtd_aqn_companias", db_column="idcompania", verbose_name=FLUtil.translate(u"Compañia", u"MetaData"), blank=True, null=True, to_field="idcompania", on_delete=FLUtil.deleteCascade, related_name="aqn_user_idcompania__fk__aqn_companias_idcompania")._miextend(visiblegrid=False, OLDTIPO="UINT")
+    idcompany = models.ForeignKey("mtd_aqn_companies", db_column="idcompany", verbose_name=FLUtil.translate(u"Compañia", u"MetaData"), blank=True, null=True, to_field="idcompany", on_delete=FLUtil.deleteCascade, related_name="aqn_user_idcompany__fk__aqn_companies_idcompany")._miextend(visiblegrid=False, OLDTIPO="UINT")
 
     class Meta:
         managed = True
@@ -81,12 +81,12 @@ class mtd_aqn_user(models.Model, BaseModel):
         db_table = 'aqn_user'
 
 
-class mtd_aqn_companias(models.Model, BaseModel):
-    idcompania = models.AutoField(db_column="idcompania", verbose_name=FLUtil.translate(u"Código", u"MetaData"), primary_key=True, blank=False)._miextend(REQUIRED=True, visiblegrid=False, OLDTIPO="SERIAL")
+class mtd_aqn_companies(models.Model, BaseModel):
+    idcompany = models.AutoField(db_column="idcompany", verbose_name=FLUtil.translate(u"Código", u"MetaData"), primary_key=True, blank=False)._miextend(REQUIRED=True, visiblegrid=False, OLDTIPO="SERIAL")
     nombre = models.CharField(db_column="nombre", verbose_name=FLUtil.translate(u"Nombre proyecto", u"MetaData"), blank=False, null=True, max_length=50)._miextend(REQUIRED=True, OLDTIPO="STRING")
     descripcion = models.CharField(db_column="descripcion", verbose_name=FLUtil.translate(u"Descripción", u"MetaData"), blank=True, null=True, max_length=200)._miextend(OLDTIPO="STRING")
 
     class Meta:
         managed = True
         verbose_name = FLUtil.translate(u"Compañias", u"MetaData")
-        db_table = u"aqn_companias"
+        db_table = u"aqn_companies"

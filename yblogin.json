@@ -98,11 +98,11 @@
             },
             {
                 "path": "models/fllogin/",
-                "name": "model_fllogin__aqn_companias.py"
+                "name": "model_fllogin__aqn_companies.py"
             },
             {
                 "path": "models/fllogin/",
-                "name": "model_fllogin__aqn_companias_def.py"
+                "name": "model_fllogin__aqn_companies_def.py"
             }
         ],
         "replaceFile": [
