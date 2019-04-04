@@ -119,7 +119,9 @@
             "value": {
                 "fllogin": {
                     "auth_user": null,
-                    "auth_group": null
+                    "auth_group": null,
+                    "aqn_user": null,
+                    "aqn_companias": null
                 }
             }
         }
