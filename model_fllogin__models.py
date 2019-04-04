@@ -66,7 +66,7 @@ class mtd_sis_acl(models.Model, BaseModel):
 
 
 class mtd_aqn_user(models.Model, BaseModel):
-    idusuario = models.AutoField(db_column="id", verbose_name=FLUtil.translate(u"Identificador", u"MetaData"), primary_key=True)._miextend(visiblegrid=False, OLDTIPO="SERIAL")
+    idusuario = models.AutoField(db_column="idusuario", verbose_name=FLUtil.translate(u"Identificador", u"MetaData"), primary_key=True)._miextend(visiblegrid=False, OLDTIPO="SERIAL")
     password = models.CharField(max_length=128)._miextend(OLDTIPO="STRING")
     last_login = models.DateTimeField(blank=True, null=True)._miextend(OLDTIPO="DATE")
     usuario = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
