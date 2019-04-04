@@ -69,9 +69,9 @@ class mtd_aqn_user(models.Model, BaseModel):
     idusuario = models.AutoField(db_column="id", verbose_name=FLUtil.translate(u"Identificador", u"MetaData"), primary_key=True)._miextend(visiblegrid=False, OLDTIPO="SERIAL")
     password = models.CharField(max_length=128)._miextend(OLDTIPO="STRING")
     last_login = models.DateTimeField(blank=True, null=True)._miextend(OLDTIPO="DATE")
-    usuario = models.CharField(max_length=30)._miextend(OLDTIPO="STRING")
-    nombre = models.CharField(max_length=30)._miextend(OLDTIPO="STRING")
-    apellidos = models.CharField(max_length=30)._miextend(OLDTIPO="STRING")
+    usuario = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
+    nombre = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
+    apellidos = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
     email = models.CharField(unique=True, max_length=254)._miextend(OLDTIPO="STRING")
     idcompania = models.ForeignKey("mtd_aqn_companias", db_column="idcompania", verbose_name=FLUtil.translate(u"Compañia", u"MetaData"), blank=True, null=True, to_field="idcompania", on_delete=FLUtil.deleteCascade, related_name="aqn_user_idcompania__fk__aqn_companias_idcompania")._miextend(visiblegrid=False, OLDTIPO="UINT")
 
