@@ -6,9 +6,7 @@
             "value": {
                 "fllogin": {
                     "auth_group": null,
-                    "auth_user": null,
-                    "aqn_user": null,
-                    "aqn_companies": null
+                    "auth_user": null
                 }
             }
         }
