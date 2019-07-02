@@ -17,7 +17,7 @@ from YBLEGACY.constantes import *
 class yblogin(interna):
 
     def yblogin_getDesc(self):
-        return None
+        return "usuario"
 
     def yblogin_check_permissions(self, model, prefix, pk, template, acl, accion):
         usuario = qsatype.FLUtil.nameUser()
