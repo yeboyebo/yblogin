@@ -52,7 +52,9 @@ class yblogin(interna):
         return render(request, "portal/signup.html", {"error": error})
 
     def yblogin_account(self, request, error):
-        return render(request, "portal/account.html", {"error": error, "usuario": request.user})
+        url = "/system/aqn_user/" + request.user.username
+        return HttpResponseRedirect(url)
+        # return render(request, "portal/account.html", {"error": error, "usuario": request.user})
 
     def yblogin_auth_login(self, request):
         if request.method == "POST":
@@ -107,10 +109,10 @@ class yblogin(interna):
                         return HttpResponseRedirect("/login")
                     except Exception as exc:
                         print(exc)
-                        return self.iface.account(request, "Error inesperado consulte administrador")
+                        return self.iface.changePassword(request, "Error inesperado consulte administrador")
                 else:
-                    return self.iface.account(request, "Las contraseñas no coinciden")
-        return self.iface.account(request, "")
+                    return self.iface.changePassword(request, "Las contraseñas no coinciden")
+        return self.iface.changePassword(request, "")
 
     def yblogin_deleteUser(self, request, user):
         User.objects.filter(username=user).delete()
@@ -123,12 +125,16 @@ class yblogin(interna):
         history = cacheController.addHistory(request, None, None)
         history = history["list"][history["pos"] - 1] if history["pos"] > 0 else history["list"][history["pos"]]
         usuario = request.user.username
+        nombreUsuario = request.user.first_name
         superuser = request.user.is_superuser
         dct_menu = templateCTX.cargaMenuJSON("portal/menu_system.json")
-        dct_menu = dct_menu["items"]
-        mi_menu = accessControl.accessControl.dameDashboard(request.user, dct_menu)
+        # dct_menu = dct_menu["items"]
+        if len(dct_menu["items"]) == 1:
+            url = dct_menu["items"][0]["URL"]
+            return HttpResponseRedirect("/" + url)
+        mi_menu = accessControl.accessControl.dameDashboard(request.user, dct_menu["items"])
 
-        return render(request, "YBWEB/dashboard.html", {"aplic": "portal", "menuJson": mi_menu, "usuario": usuario, "superuser": superuser, "history": history, "next": "/"})
+        return render(request, "YBWEB/dashboard.html", {"aplic": "portal", "menuJson": mi_menu, "usuario": usuario, "nombreUsuario": nombreUsuario, "superuser": superuser, "history": history, "next": "/"})
 
     def yblogin_newgroup(self, request, error):
         return render(request, "portal/newgroup.html", {"error": error})
@@ -254,6 +260,9 @@ class yblogin(interna):
     def yblogin_controlGroup(self, request):
         return True
 
+    def yblogin_changePassword(self, request, error):
+        return render(request, "portal/account.html", {"error": error, "usuario": request.user})
+
     def __init__(self, context=None):
         super().__init__(context)
 
@@ -270,6 +279,8 @@ class yblogin(interna):
     def signup(self, request, error):
         return self.iface.yblogin_signup(request, error)
 
+    @decoradores.check_authentication_iface
+    @decoradores.check_system_authentication_iface
     def account(self, request, error):
         return self.iface.yblogin_account(request, error)
 
@@ -357,4 +368,9 @@ class yblogin(interna):
     @decoradores.check_system_authentication_iface
     def controlGroup(self, request):
         return self.iface.yblogin_controlGroup(request)
+
+    @decoradores.check_authentication_iface
+    @decoradores.check_system_authentication_iface
+    def changePassword(self, request, error):
+        return self.iface.yblogin_changePassword(request, error)
 

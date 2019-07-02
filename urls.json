@@ -36,13 +36,23 @@
             "value": {
                 "account": {
                     "url": "account/$",
-                    "func": "account_request"
+                    "func": "account"
                 }
             }
         },
         {
             "type": "insertAfterNode",
             "path": "/portal/account",
+            "value": {
+                "changepassword": {
+                    "url": "changepassword/$",
+                    "func": "account_request"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/changepassword",
             "value": {
                 "logout": {
                     "url": "logout$",

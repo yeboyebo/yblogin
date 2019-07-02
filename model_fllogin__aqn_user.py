@@ -16,6 +16,7 @@ class mtd_aqn_user(baseraw):
     nombre = baseraw.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
     apellidos = baseraw.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
     email = baseraw.CharField(unique=True, max_length=254)._miextend(OLDTIPO="STRING")
+    activo = models.BooleanField()._miextend(OLDTIPO="BOOL")
     idcompany = baseraw.ForeignKey("mtd_aqn_companies", db_column="idcompany", verbose_name=FLUtil.translate(u"Compañia", u"MetaData"), blank=True, null=True, to_field="idcompany", on_delete=FLUtil.deleteCascade, related_name="aqn_user_idcompany__fk__aqn_companies_idcompany")._miextend(visiblegrid=False, OLDTIPO="UINT")
 
     class Meta:
