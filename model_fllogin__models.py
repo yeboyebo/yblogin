@@ -73,7 +73,11 @@ class mtd_aqn_user(models.Model, BaseModel):
     nombre = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
     apellidos = models.CharField(max_length=30, blank=True, null=True)._miextend(OLDTIPO="STRING")
     email = models.CharField(unique=True, max_length=254)._miextend(OLDTIPO="STRING")
+    activo = models.BooleanField()._miextend(OLDTIPO="BOOL", default=True)
     idcompany = models.ForeignKey("mtd_aqn_companies", db_column="idcompany", verbose_name=FLUtil.translate(u"Compañia", u"MetaData"), blank=True, null=True, to_field="idcompany", on_delete=FLUtil.deleteCascade, related_name="aqn_user_idcompany__fk__aqn_companies_idcompany")._miextend(visiblegrid=False, OLDTIPO="UINT")
+    # idtareaactiva = baseraw.IntegerField(db_column="idtareaactiva", verbose_name=FLUtil.translate(u"Tarea Activa", u"MetaData"), blank=True, null=True)._miextend(visiblegrid=False, OLDTIPO="UINT")
+    idtareaactiva = models.ForeignKey("mtd_gt_tareas", db_column="idtareaactiva", verbose_name=FLUtil.translate(u"Tarea Activa", u"MetaData"), blank=True, null=True, to_field="idtarea", on_delete=models.PROTECT, related_name="aqn_user_idtareaactiva__fk__gt_tareas_idtarea")._miextend(visiblegrid=False, OLDTIPO="UINT")
+    costehora = models.FloatField(db_column="costehora", verbose_name=FLUtil.translate(u"Coste hora", u"MetaData"), default=0, blank=True, null=True)._miextend(OLDTIPO="DOUBLE", partI=4, partD=2)
 
     class Meta:
         managed = True
@@ -90,3 +94,22 @@ class mtd_aqn_companies(models.Model, BaseModel):
         managed = True
         verbose_name = FLUtil.translate(u"Compañias", u"MetaData")
         db_table = u"aqn_companies"
+
+
+class mtd_aqn_invitations(models.Model, BaseModel):
+    id = models.AutoField(db_column="id", verbose_name=FLUtil.translate(u"Identificador", u"MetaData"), primary_key=True, blank=False)._miextend(REQUIRED=True, visiblegrid=False, OLDTIPO="SERIAL")
+    email = models.CharField(max_length=254)._miextend(OLDTIPO="STRING")
+    hashcode = models.CharField(db_column="hashcode", verbose_name=FLUtil.translate(u"Hashcode", u"MetaData"), blank=True, null=True, max_length=200)._miextend(OLDTIPO="STRING")
+    idcompany = models.ForeignKey("mtd_aqn_companies", db_column="idcompany", verbose_name=FLUtil.translate(u"Compañia", u"MetaData"), blank=True, null=True, to_field="idcompany", on_delete=FLUtil.deleteCascade, related_name="aqn_invitations_idcompany__fk__aqn_companies_idcompany")._miextend(visiblegrid=False, OLDTIPO="UINT")
+    fecha = models.DateTimeField()._miextend(OLDTIPO="DATE")
+    activo = models.BooleanField()._miextend(OLDTIPO="BOOL")
+    # codproyecto = models.CharField(db_column="codproyecto", verbose_name=FLUtil.translate(u"Proyecto", u"MetaData"), blank=False, null=True, max_length=15)._miextend(REQUIRED=True, OLDTIPO="STRING")
+    codproyecto = models.ForeignKey("mtd_gt_proyectos", db_column="codproyecto", verbose_name=FLUtil.translate(u"Proyecto", u"MetaData"), blank=False, null=True, max_length=15, to_field="codproyecto", on_delete=FLUtil.deleteCascade, related_name="aqn_invitations_codproyecto__fk__gt_proyectos_codproyecto")._miextend(REQUIRED=True, OLDTIPO="STRING")
+    tipo = models.CharField(db_column="tipo", verbose_name=FLUtil.translate(u"Tipo", u"MetaData"), blank=True, null=True, max_length=50)._miextend(OLDTIPO="STRING")
+    caducidad = models.DateTimeField(blank=True, null=True)._miextend(OLDTIPO="DATE")
+
+    class Meta:
+        managed = True
+        verbose_name = FLUtil.translate(u"Invitaciones", u"MetaData")
+        db_table = u"aqn_invitations"
+
