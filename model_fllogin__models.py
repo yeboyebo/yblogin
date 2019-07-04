@@ -78,6 +78,8 @@ class mtd_aqn_user(models.Model, BaseModel):
     idtareaactiva = models.IntegerField(db_column="idtareaactiva", verbose_name=FLUtil.translate(u"Tarea Activa", u"MetaData"), blank=True, null=True)._miextend(visiblegrid=False, OLDTIPO="UINT")
     # idtareaactiva = models.ForeignKey("mtd_gt_tareas", db_column="idtareaactiva", verbose_name=FLUtil.translate(u"Tarea Activa", u"MetaData"), blank=True, null=True, to_field="idtarea", on_delete=models.PROTECT, related_name="aqn_user_idtareaactiva__fk__gt_tareas_idtarea")._miextend(visiblegrid=False, OLDTIPO="UINT")
     costehora = models.FloatField(db_column="costehora", verbose_name=FLUtil.translate(u"Coste hora", u"MetaData"), default=0, blank=True, null=True)._miextend(OLDTIPO="DOUBLE", partI=4, partD=2)
+    nif = models.CharField(db_column="nif", verbose_name=FLUtil.translate(u"NIF", u"MetaData"), blank=True, null=True, max_length=10)._miextend(OLDTIPO="STRING")
+    naf = models.CharField(db_column="naf", verbose_name=FLUtil.translate(u"NAF", u"MetaData"), blank=True, null=True, max_length=14)._miextend(OLDTIPO="STRING")
 
     class Meta:
         managed = True
@@ -89,6 +91,8 @@ class mtd_aqn_companies(models.Model, BaseModel):
     idcompany = models.AutoField(db_column="idcompany", verbose_name=FLUtil.translate(u"Código", u"MetaData"), primary_key=True, blank=False)._miextend(REQUIRED=True, visiblegrid=False, OLDTIPO="SERIAL")
     nombre = models.CharField(db_column="nombre", verbose_name=FLUtil.translate(u"Nombre proyecto", u"MetaData"), blank=False, null=True, max_length=50)._miextend(REQUIRED=True, OLDTIPO="STRING")
     descripcion = models.CharField(db_column="descripcion", verbose_name=FLUtil.translate(u"Descripción", u"MetaData"), blank=True, null=True, max_length=200)._miextend(OLDTIPO="STRING")
+    cif = models.CharField(db_column="cif", verbose_name=FLUtil.translate(u"CIF", u"MetaData"), blank=True, null=True, max_length=9)._miextend(OLDTIPO="STRING")
+    ccc = models.CharField(db_column="ccc", verbose_name=FLUtil.translate(u"CCC", u"MetaData"), blank=True, null=True, max_length=13)._miextend(OLDTIPO="STRING")
 
     class Meta:
         managed = True
