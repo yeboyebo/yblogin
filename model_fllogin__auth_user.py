@@ -56,12 +56,16 @@ class yblogin_auth_user(interna_auth_user, helpers.MixinConAcciones):
     def accessControl(self):
         return form.iface.accessControl(self)
 
+
 # @class_declaration auth_user #
 class auth_user(yblogin_auth_user, helpers.MixinConAcciones):
     pass
 
     class Meta:
         proxy = True
+
+    def getIface(self=None):
+        return form.iface
 
 
 definitions = importlib.import_module("models.fllogin.auth_user_def")
