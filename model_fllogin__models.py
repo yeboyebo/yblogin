@@ -138,12 +138,3 @@ class mtd_aqn_invitations(models.Model, BaseModel):
         verbose_name = FLUtil.translate(u"Invitaciones", u"MetaData")
         db_table = u"aqn_invitations"
 
-
-class mtd_gesttare_clients(models.Model, BaseModel):
-    idclient = models.AutoField(db_column="idclient", verbose_name=FLUtil.translate(u"Identificador", u"MetaData"), primary_key=True, blank=False)._miextend(REQUIRED=True, visiblegrid=False, OLDTIPO="SERIAL")
-    nombre = models.CharField(db_column="nombre", verbose_name=FLUtil.translate(u"Nombre cliente", u"MetaData"), blank=False, null=True, max_length=50)._miextend(REQUIRED=True, OLDTIPO="STRING")
-
-    class Meta:
-        managed = True
-        verbose_name = FLUtil.translate(u"Clientes", u"MetaData")
-        db_table = u"gesttare_clients"
