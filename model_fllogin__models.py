@@ -130,6 +130,7 @@ class mtd_aqn_invitations(models.Model, BaseModel):
     activo = models.BooleanField()._miextend(OLDTIPO="BOOL")
     codproyecto = models.CharField(db_column="codproyecto", verbose_name=FLUtil.translate(u"Proyecto", u"MetaData"), blank=False, null=True, max_length=15)._miextend(REQUIRED=True, OLDTIPO="STRING")
     # codproyecto = models.ForeignKey("mtd_gt_proyectos", db_column="codproyecto", verbose_name=FLUtil.translate(u"Proyecto", u"MetaData"), blank=False, null=True, max_length=15, to_field="codproyecto", on_delete=FLUtil.deleteCascade, related_name="aqn_invitations_codproyecto__fk__gt_proyectos_codproyecto")._miextend(REQUIRED=True, OLDTIPO="STRING")
+    idproyecto = models.IntegerField(db_column="idproyecto", verbose_name=FLUtil.translate(u"Proyecto", u"MetaData"), blank=True, null=True)._miextend(visiblegrid=False, OLDTIPO="UINT")
     tipo = models.CharField(db_column="tipo", verbose_name=FLUtil.translate(u"Tipo", u"MetaData"), blank=True, null=True, max_length=50)._miextend(OLDTIPO="STRING")
     caducidad = models.DateTimeField(blank=True, null=True)._miextend(OLDTIPO="DATE")
 
